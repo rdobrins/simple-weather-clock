@@ -1,8 +1,7 @@
 .App {
-}
-
-.ryan-text {
-  color: #FFF;
+  color: #fff;
+  display: flex;
+  justify-content: center;
 }
 
 /*.App-logo {

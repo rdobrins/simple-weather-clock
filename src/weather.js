@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { weatherApi } from "./utils";
 import "./App.css";
+import "./dist/wu-icons-style.css";
 
 class Weather extends Component {
   constructor(props) {
@@ -11,12 +12,8 @@ class Weather extends Component {
     };
   }
 
-  componentDidMount() {
-    this.getWeather("02134");
-  }
-
   componentWillMount() {
-    this.getWeather("autoip");
+    this.getWeather("02134");
   }
 
   getWeather(query) {
@@ -32,11 +29,11 @@ class Weather extends Component {
       } else {
         let current = response.current_observation;
         this.setState({
-          temp: current.temperature_string,
+          temp: current.temp_f.toString(),
           location: current.display_location.full,
-          icon_url: current.icon_url,
-          time: current.observation_time,
-          forcast: response.forecast.simpleforecast.forecastday
+          icon: current.icon,
+          forcast: response.forecast.simpleforecast.forecastday,
+          weather: current.weather
         });
       }
       this.setState({ loaded: true });
@@ -51,16 +48,32 @@ class Weather extends Component {
             <div className="card-block">
               <h4 className="card-title">{this.state.location}</h4>
               <p className="card-text">
-                {this.state.time}
                 <br />
-                <img src={this.state.icon_url} alt="weather" />
+                {this.weatherIcon(this.state.icon)}
               </p>
+              <h4>{this.state.weather}</h4>
               <h4>{this.state.temp}&deg;</h4>
             </div>
           </div>
         </div>
       </div>
     );
+  }
+
+  weatherIcon(icon) {
+    return (
+      <i
+        className={"wu wu-solid-white wu-128 wu-" + icon + this.dayOrNight()}
+      />
+    );
+  }
+
+  dayOrNight() {
+    let hours = new Date().getHours();
+
+    if (hours < 6 || hours > 18) {
+      return " wu-night";
+    }
   }
 
   renderForcast() {
@@ -73,17 +86,17 @@ class Weather extends Component {
               <div className="card">
                 <div className="card-block">
                   <p className="card-text">
+                    <br />
+                    ======================
+                    <br />
                     {forcast.date.weekday} {forcast.date.monthname}{" "}
                     {forcast.date.day}
                     <br />
-                    <img src={forcast.icon_url} alt="weather" />
+                    {this.weatherIcon(forcast.icon)}
                   </p>
-                  <h4>
-                    High: {forcast.high.fahrenheit} ({forcast.high.celsius})&deg;
-                  </h4>
-                  <h4>
-                    Low: {forcast.low.fahrenheit} ({forcast.low.celsius})&deg;
-                  </h4>
+                  <h4>{forcast.conditions}</h4>
+                  <h4>High: {forcast.high.fahrenheit}&deg;</h4>
+                  <h4>Low: {forcast.low.fahrenheit}&deg;</h4>
                 </div>
               </div>
             </div>

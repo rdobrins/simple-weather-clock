@@ -1,7 +1,8 @@
 .App {
   color: #fff;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 /*.App-logo {

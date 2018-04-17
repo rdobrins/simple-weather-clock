@@ -73,6 +73,8 @@ class Weather extends Component {
 
     if (hours < 6 || hours > 18) {
       return " wu-night";
+    } else {
+      return "";
     }
   }
 

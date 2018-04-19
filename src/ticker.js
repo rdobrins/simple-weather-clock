@@ -38,11 +38,12 @@ class Ticker extends Component {
   renderTicker(quotes) {
     const settings = {
       infinite: true,
-      slidesToShow: 8,
+      slidesToShow: 5,
       autoplay: true,
       speed: 2000,
       autoplaySpeed: 2000,
-      cssEase: "linear"
+      cssEase: "linear",
+      arrows: false
     };
     return (
       <div>
@@ -62,7 +63,7 @@ class Ticker extends Component {
 
   render() {
     if (this.state.loaded) {
-      return <div>{this.renderTicker(this.state.apiresponse)}</div>;
+      return <div className="ticker-container">{this.renderTicker(this.state.apiresponse)}</div>;
     } else {
       return (
         <div className="center-block">

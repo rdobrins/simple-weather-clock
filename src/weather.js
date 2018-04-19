@@ -44,15 +44,12 @@ class Weather extends Component {
     return (
       <div className="row">
         <div className="col-md-6 offset-md-3">
-          <div className="card">
-            <div className="card-block">
-              <h4 className="card-title">{this.state.location}</h4>
-              <p className="card-text">
-                <br />
-                {this.weatherIcon(this.state.icon)}
-              </p>
-              <h4>{this.state.weather}</h4>
-              <h4>{this.state.temp}&deg;</h4>
+          <div className="card current-weather-card">
+            <div className="card-block current-weather-block">
+              <div className="temp-icon">
+                <span>{this.weatherIcon(this.state.icon, "256")}</span>
+                <span className="temp-title">{this.state.temp}&deg;</span>
+              </div>
             </div>
           </div>
         </div>
@@ -60,10 +57,12 @@ class Weather extends Component {
     );
   }
 
-  weatherIcon(icon) {
+  weatherIcon(icon, size) {
     return (
       <i
-        className={"wu wu-solid-white wu-128 wu-" + icon + this.dayOrNight()}
+        className={
+          "wu wu-solid-white wu-" + size + " wu-" + icon + this.dayOrNight()
+        }
       />
     );
   }
@@ -87,18 +86,24 @@ class Weather extends Component {
             <div className="col-md-3" key={forcast.period}>
               <div className="card">
                 <div className="card-block">
-                  <p className="card-text">
-                    <br />
-                    ======================
-                    <br />
-                    {forcast.date.weekday} {forcast.date.monthname}{" "}
-                    {forcast.date.day}
-                    <br />
-                    {this.weatherIcon(forcast.icon)}
-                  </p>
-                  <h4>{forcast.conditions}</h4>
-                  <h4>High: {forcast.high.fahrenheit}&deg;</h4>
-                  <h4>Low: {forcast.low.fahrenheit}&deg;</h4>
+                  <div className="day-date">
+                    <span className="day-display">{forcast.date.weekday}</span>
+                    <span className="date-display">
+                      {forcast.date.monthname}
+                      &nbsp;
+                      {forcast.date.day}
+                    </span>
+                  </div>
+                  <div className="icon-and-high-low">
+                    <div className="day-of-week">
+                      {this.weatherIcon(forcast.icon, "128")}
+                    </div>
+                    <div className="highs-and-lows">
+                      <h2>{forcast.high.fahrenheit}&deg;</h2>
+                      <h1>|</h1>
+                      <h2>{forcast.low.fahrenheit}&deg;</h2>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

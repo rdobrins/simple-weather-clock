@@ -2,7 +2,9 @@
   color: #fff;
   display: flex;
   flex-direction: column;
+  font-family: arial;
   justify-content: space-between;
+  margin: 2em;
 }
 
 /*.App-logo {

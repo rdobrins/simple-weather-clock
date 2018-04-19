@@ -11,8 +11,7 @@ class Clock extends React.Component {
       }).format(new Date()),
       time: new Intl.DateTimeFormat("en-US", {
         hour: "numeric",
-        minute: "numeric",
-        second: "numeric"
+        minute: "numeric"
       }).format(new Date())
     };
   }
@@ -30,16 +29,15 @@ class Clock extends React.Component {
       }).format(new Date()),
       time: new Intl.DateTimeFormat("en-US", {
         hour: "numeric",
-        minute: "numeric",
-        second: "numeric"
+        minute: "numeric"
       }).format(new Date())
     });
   }
   render() {
     return (
       <div className="date-clock-container">
-        <p className="date">{this.state.date}</p>
-        <p className="clock">{this.state.time}</p>
+        <span className="date">{this.state.date}</span>
+        <span className="clock">{this.state.time}</span>
       </div>
     );
   }

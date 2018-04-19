@@ -1,7 +1,24 @@
 body {
   background-color: #000;
   height: 100%;
+  margin: 0;
   width: 100%;
+}
+
+#root {
+  transform: rotate(90deg);
+  transform-origin: bottom left;
+
+  position: absolute;
+  top: -100vw;
+
+  height: 100vw;
+  width: 100vh;
+
+  background-color: #000;
+  color: #fff;
+
+  overflow: hidden;
 }
 
 .weather-clock {
@@ -19,4 +36,84 @@ body {
 .center-ticker {
   display: flex;
   justify-content: center;
+}
+
+.icon-and-high-low {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20em;
+}
+
+.highs-and-lows {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.4em;
+  font-style: arial;
+  justify-content: space-between;
+  width: 7em;
+}
+
+.day-date {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  font-size: 3em;
+  font-weight: bold;
+  width: 5em;
+}
+
+.day-display {
+  margin-bottom: 0.5em;
+}
+
+.card {
+  margin: 5em 0;
+}
+
+.current-weather-card {
+  margin: 2em 0 5em 0;
+}
+
+.current-weather-block {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5em;
+}
+
+.card-block {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.temp-icon {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.temp-title {
+  font-size: 9em;
+  font-weight: bold;
+}
+
+.date-clock-container {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
+  font-size: 9em;
+  font-weight: bold;
+}
+
+.clock {
+  font-size: 9em;
+  font-weight: bold;
 }

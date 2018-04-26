@@ -22,15 +22,27 @@ body {
 }
 
 .weather-clock {
-  color: #fff;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  flex: 9;
+}
+
+.ticker-container {
+  flex: 1;
+}
+
+.weather-container {
+  align-items: flex-start;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .ticker-quote {
   display: flex;
   flex-direction: column;
+  font-size: 3em;
+  font-weight: bold;
 }
 
 .center-ticker {
@@ -41,53 +53,53 @@ body {
 .icon-and-high-low {
   align-items: center;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  width: 20em;
 }
 
 .highs-and-lows {
   align-items: center;
   display: flex;
-  flex-direction: row;
-  font-size: 1.4em;
+  flex-direction: column;
+  font-size: 2.5em;
   font-style: arial;
+  justify-content: space-between;
+}
+
+.day-date {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 2.5em;
+  font-weight: bold;
   justify-content: space-between;
   width: 7em;
 }
 
-.day-date {
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  font-size: 3em;
-  font-weight: bold;
-  width: 5em;
-}
-
 .day-display {
-  margin-bottom: 0.5em;
 }
 
 .card {
-  margin: 5em 0;
 }
 
 .current-weather-card {
-  margin: 2em 0 5em 0;
 }
 
 .current-weather-block {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-left: 5em;
 }
 
 .card-block {
   align-items: center;
   display: flex;
   flex-direction: row;
+}
+
+.forcast-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .temp-icon {
@@ -98,7 +110,7 @@ body {
 }
 
 .temp-title {
-  font-size: 9em;
+  font-size: 7em;
   font-weight: bold;
 }
 
@@ -106,14 +118,24 @@ body {
   align-items: flex-end;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .date {
-  font-size: 9em;
+  font-size: 5em;
   font-weight: bold;
 }
 
 .clock {
-  font-size: 9em;
+  font-size: 5em;
   font-weight: bold;
+}
+
+.high-temp,
+.low-temp {
+  margin: 0.15em 0;
+}
+
+.forcast-card {
+  margin: 5em 0 0 2em;
 }

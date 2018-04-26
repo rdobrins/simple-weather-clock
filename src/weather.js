@@ -42,15 +42,11 @@ class Weather extends Component {
 
   renderWeather() {
     return (
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
-          <div className="card current-weather-card">
-            <div className="card-block current-weather-block">
-              <div className="temp-icon">
-                <span>{this.weatherIcon(this.state.icon, "256")}</span>
-                <span className="temp-title">{this.state.temp}&deg;</span>
-              </div>
-            </div>
+      <div className="card current-weather-card">
+        <div className="card-block current-weather-block">
+          <div className="temp-icon">
+            <span>{this.weatherIcon(this.state.icon, "256")}</span>
+            <span className="temp-title">{this.state.temp}&deg;</span>
           </div>
         </div>
       </div>
@@ -79,44 +75,41 @@ class Weather extends Component {
 
   renderForcast() {
     const forcasts = this.state.forcast;
-    return (
-      <div className="row">
-        {forcasts.map(forcast => {
-          return (
-            <div className="col-md-3" key={forcast.period}>
-              <div className="card">
-                <div className="card-block">
-                  <div className="day-date">
-                    <span className="day-display">{forcast.date.weekday}</span>
-                    <span className="date-display">
-                      {forcast.date.monthname}
-                      &nbsp;
-                      {forcast.date.day}
-                    </span>
-                  </div>
-                  <div className="icon-and-high-low">
-                    <div className="day-of-week">
-                      {this.weatherIcon(forcast.icon, "128")}
-                    </div>
-                    <div className="highs-and-lows">
-                      <h2>{forcast.high.fahrenheit}&deg;</h2>
-                      <h1>|</h1>
-                      <h2>{forcast.low.fahrenheit}&deg;</h2>
-                    </div>
-                  </div>
-                </div>
+    return forcasts.map(forcast => {
+      return (
+        <div className="forcast-card" key={forcast.period}>
+          <div className="card-block forcast-info">
+            <div className="day-date">
+              <span className="day-display">
+                {forcast.date.weekday.substring(0, 3).toUpperCase()}
+              </span>
+              <span className="date-display">
+                {forcast.date.monthname.substring(0, 3).toUpperCase()}
+                &nbsp;
+                {forcast.date.day}
+              </span>
+            </div>
+            <div className="icon-and-high-low">
+              <div className="day-of-week">
+                {this.weatherIcon(forcast.icon, "128")}
+              </div>
+              <div className="highs-and-lows">
+                <span className="high-temp">
+                  {forcast.high.fahrenheit}&deg;
+                </span>
+                <span className="low-temp">{forcast.low.fahrenheit}&deg;</span>
               </div>
             </div>
-          );
-        })}
-      </div>
-    );
+          </div>
+        </div>
+      );
+    });
   }
 
   render() {
     if (this.state.loaded) {
       return (
-        <div>
+        <div className="weather-container">
           {this.renderWeather()}
           {this.renderForcast()}
         </div>
@@ -124,7 +117,7 @@ class Weather extends Component {
     } else {
       return (
         <div className="center-block">
-          <span>Loading</span>
+          <span></span>
         </div>
       );
     }

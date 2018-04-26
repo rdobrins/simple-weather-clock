@@ -38,9 +38,9 @@ class Ticker extends Component {
   renderTicker(quotes) {
     const settings = {
       infinite: true,
-      slidesToShow: 5,
+      slidesToShow: 3,
       autoplay: true,
-      speed: 2000,
+      speed: 3000,
       autoplaySpeed: 2000,
       cssEase: "linear",
       arrows: false
@@ -63,11 +63,17 @@ class Ticker extends Component {
 
   render() {
     if (this.state.loaded) {
-      return <div className="ticker-container">{this.renderTicker(this.state.apiresponse)}</div>;
+      return (
+        <div className="ticker-container">
+          <div className="ticker">
+            {this.renderTicker(this.state.apiresponse)}
+          </div>
+        </div>
+      );
     } else {
       return (
         <div className="center-block">
-          <span>Loading</span>
+          <span></span>
         </div>
       );
     }
